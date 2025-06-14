@@ -5,7 +5,7 @@ const port = 9000;
 
 const app = express();
 app.use(cors({
-    origin : 'http://localhost:5173',
+    origin : ['http://localhost:5173', 'https://ab-media-mt.vercel.app/'],
     credentials : true 
 }));
 app.use('/api', travelRoutes);

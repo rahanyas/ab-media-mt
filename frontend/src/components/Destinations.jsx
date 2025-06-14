@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 import Spinner from "./Loading";
 
 const Destinations = () => {
@@ -11,7 +11,7 @@ const Destinations = () => {
   const { data, isError, isLoading, error, isPlaceholderData } = useQuery({
     queryKey: ["destinations", page],
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:9000/api/destination?page=${page}&limit=${limit}`);
+      const response = await axiosInstance.get(`/api/destination?page=${page}&limit=${limit}`);
       return response.data;
     },
     keepPreviousData: true,
