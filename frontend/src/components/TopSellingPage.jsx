@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 import Spinner from "./Loading";
 
 const TopSellingPage = () => {
   const { data, isError, isLoading, error } = useQuery({
     queryKey: ["topSelling"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:9000/api/packages/top-selling");
+      const res = await axiosInstance.get("/api/packages/top-selling");
       return res.data;
     }
   });
